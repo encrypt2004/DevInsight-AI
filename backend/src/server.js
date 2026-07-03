@@ -5,7 +5,8 @@ import app from "./app.js";
 import connectDB from "./config/db.js";
 
 connectDB();
-console.log("Gemini Key:", process.env.GEMINI_API_KEY);
+// console.log("GitHub Token:", process.env.GITHUB_TOKEN);
+// console.log("Gemini Key:", process.env.GEMINI_API_KEY);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

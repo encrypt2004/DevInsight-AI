@@ -33,6 +33,19 @@ const analysisSchema = new mongoose.Schema(
       },
     ],
 
+    // ⭐ NEW
+    portfolioMetrics: {
+      portfolioScore: Number,
+
+      breakdown: {
+        repoQuality: Number,
+        readme: Number,
+        deployment: Number,
+        techDiversity: Number,
+        consistency: Number,
+      },
+    },
+
     aiAnalysis: {
       overallRating: String,
       portfolioScore: Number,
@@ -59,8 +72,6 @@ const analysisSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-// ✅ Prevent OverwriteModelError
 const Analysis =
   mongoose.models.Analysis ||
   mongoose.model("Analysis", analysisSchema);

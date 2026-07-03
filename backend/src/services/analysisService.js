@@ -10,6 +10,8 @@ import generatePortfolioAnalysis from "./geminiService.js";
 import calculateStats from "../utils/calculateStats.js";
 import calculateLanguages from "../utils/calculateLanguages.js";
 
+import calculatePortfolioScore from "./portfolioScoringService.js";
+
 const analyzeGithubProfile = async (username) => {
   // 1. Check MongoDB Cache
   const cachedAnalysis = await Analysis.findOne({
@@ -35,15 +37,63 @@ const analyzeGithubProfile = async (username) => {
   // 5. Calculate Language Distribution
   const languageDistribution = calculateLanguages(repositories);
 
-  // 6. Generate AI Analysis
+  // 6. Calculate Portfolio Score
+  const portfolioMetrics = calculatePortfolioScore(repositories);
+
+  // 7. Generate AI Analysis
   const aiAnalysis = await generatePortfolioAnalysis({
     profile,
     statistics: repositoryStatistics,
     languages: languageDistribution,
+    portfolioMetrics,
   });
 
-  // 7. Save Analysis to MongoDB
-  const analysis = await Analysis.create({
+  // 8. Save or Update MongoDB
+  
+//   const analysis = await Analysis.findOneAndUpdate(
+//     {
+//       githubUsername: username.toLowerCase(),
+//     },
+//     {
+//       githubUsername: username.toLowerCase(),
+
+//       profile: {
+//         avatarUrl: profile.avatar_url,
+//         name: profile.name,
+//         username: profile.login,
+//         bio: profile.bio,
+//         followers: profile.followers,
+//         following: profile.following,
+//         publicRepos: profile.public_repos,
+//       },
+
+//       repositoryStatistics,
+
+//       languageDistribution,
+
+//       portfolioMetrics,
+
+//       aiAnalysis,
+//     },
+//    {
+//   returnDocument: "after",
+//   upsert: true,
+// }
+//   );
+
+//   return {
+//     source: "github",
+//     data: analysis,
+//   };
+
+
+console.log("Saving to MongoDB...");
+
+const analysis = await Analysis.findOneAndUpdate(
+  {
+    githubUsername: username.toLowerCase(),
+  },
+  {
     githubUsername: username.toLowerCase(),
 
     profile: {
@@ -57,16 +107,24 @@ const analyzeGithubProfile = async (username) => {
     },
 
     repositoryStatistics,
-
     languageDistribution,
-
+    portfolioMetrics,
     aiAnalysis,
-  });
+  },
+  {
+    upsert: true,
+    returnDocument: "after",
+  }
+);
 
-  return {
-    source: "github",
-    data: analysis,
-  };
+console.log("Saved Successfully");
+console.log(analysis);
+
+return {
+  source: "github",
+  data: analysis,
+};
+
 };
 
 export default analyzeGithubProfile;
