@@ -34,39 +34,39 @@ const analysisSchema = new mongoose.Schema(
     ],
 
     // ⭐ NEW
-    portfolioMetrics: {
-      portfolioScore: Number,
+   portfolioMetrics: {
+  portfolioScore: Number,
 
-      breakdown: {
-        repoQuality: Number,
-        readme: Number,
-        deployment: Number,
-        techDiversity: Number,
-        consistency: Number,
-      },
-    },
+  overallRating: String,
 
-    aiAnalysis: {
-      overallRating: String,
-      portfolioScore: Number,
+  breakdown: {
+    repoQuality: Number,
+    readme: Number,
+    deployment: Number,
+    techDiversity: Number,
+    consistency: Number,
+    projectExperience: Number,
+  },
+},
 
-      strengths: [String],
+aiAnalysis: {
+  strengths: [String],
 
-      weaknesses: [String],
+  weaknesses: [String],
 
-      recommendedSkills: [String],
+  recommendedSkills: [String],
 
-      careerFit: {
-        frontend: String,
-        backend: String,
-        fullStack: String,
-      },
+  careerFit: {
+    frontend: String,
+    backend: String,
+    fullStack: String,
+  },
 
-      hiringRecommendation: {
-        status: String,
-        reason: String,
-      },
-    },
+  hiringRecommendation: {
+    status: String,
+    reason: String,
+  },
+},
   },
   {
     timestamps: true,

@@ -35,11 +35,17 @@ const generatePortfolioAnalysis = async ({
     .replace(/```json/g, "")
     .replace(/```/g, "")
     .trim();
-    
+
    console.log(
   JSON.stringify(JSON.parse(text), null, 2)
 );
-  return JSON.parse(text);
+  const analysis = JSON.parse(text);
+
+// Force backend values
+analysis.portfolioScore = portfolioMetrics.portfolioScore;
+analysis.overallRating = portfolioMetrics.overallRating;
+
+return analysis;
 };
 
 export default generatePortfolioAnalysis;

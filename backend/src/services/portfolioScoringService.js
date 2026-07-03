@@ -147,23 +147,37 @@ const calculatePortfolioScore = (repositories = []) => {
       projectExperienceScore * 0.10
   );
 
-  return {
-    portfolioScore,
+  // ===================================
+// Portfolio Rating
+// ===================================
 
-    breakdown: {
-      repoQuality: Math.round(repoQualityScore),
-      readme: Math.round(readmeScore),
-      deployment: Math.round(deploymentScore),
-      techDiversity: Math.round(
-        techDiversityScore
-      ),
-      consistency: Math.round(
-        consistencyScore
-      ),
-      projectExperience:
-        projectExperienceScore,
-    },
-  };
+let overallRating = "";
+
+if (portfolioScore >= 85) {
+  overallRating = "Outstanding Portfolio";
+} else if (portfolioScore >= 75) {
+  overallRating = "Strong Portfolio";
+} else if (portfolioScore >= 60) {
+  overallRating = "Good Portfolio";
+} else if (portfolioScore >= 40) {
+  overallRating = "Learning Portfolio";
+} else {
+  overallRating = "Beginner Portfolio";
+}
+return {
+  portfolioScore,
+
+  overallRating,
+
+  breakdown: {
+    repoQuality: Math.round(repoQualityScore),
+    readme: Math.round(readmeScore),
+    deployment: Math.round(deploymentScore),
+    techDiversity: Math.round(techDiversityScore),
+    consistency: Math.round(consistencyScore),
+    projectExperience: projectExperienceScore,
+  },
+};
 };
 
 export default calculatePortfolioScore;

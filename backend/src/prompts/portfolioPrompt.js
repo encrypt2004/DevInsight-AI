@@ -70,28 +70,16 @@ Assume the candidate is eager to learn and improve.
 If the portfolio has weaknesses, explain how to improve them.
 
 Provide practical recommendations instead of criticism.
+The portfolio score and overall rating have ALREADY been calculated by the backend scoring engine.
 
-If the score is between:
+Never modify them.
 
-90-100
-Describe it as:
-"Excellent Internship Portfolio"
+Use them only while explaining the candidate's strengths and weaknesses.
 
-80-89
-Describe it as:
-"Strong Internship Portfolio"
+Do NOT generate a new portfolio score.
 
-70-79
-Describe it as:
-"Good Portfolio with Strong Potential"
+Do NOT generate a new overall rating.
 
-60-69
-Describe it as:
-"Good Foundation with Room for Improvement"
-
-Below 60
-Describe it as:
-"Learning Stage with Good Growth Potential"
 
 Never call a student's portfolio "poor", "bad", "terrible", or "unprofessional".
 
@@ -151,8 +139,9 @@ The last character must be }
 Return EXACTLY this JSON structure:
 
 {
-  "overallRating": "",
-  "portfolioScore": ${portfolioMetrics?.portfolioScore || 0},
+  "overallRating": "${portfolioMetrics.overallRating}",
+  "portfolioScore": ${portfolioMetrics.portfolioScore}
+},
 
   "strengths": [],
 
