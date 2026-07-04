@@ -1,4 +1,4 @@
-# DevInsight AI
+<img width="949" height="413" alt="analytics-github" src="https://github.com/user-attachments/assets/67db0e6f-06a6-4421-a13a-993685d7f68f" /># DevInsight AI
 
 > **Professional Logo Placeholder**  
 > AI Powered GitHub Portfolio Analyzer for recruiter-ready portfolio intelligence.
@@ -163,13 +163,8 @@ In practical terms, a recruiter enters a GitHub username and gets a complete ana
 > Add real screenshots from the repository or deployment here.
 
 ### Dashboard
-![Dashboard Placeholder](./docs/screenshots/dashboard.png)
+![Dashboard Placeholder](./docs/dashboard.png)
 
-### Mobile View
-![Mobile View Placeholder](./docs/screenshots/mobile.png)
-
-### Desktop View
-![Desktop View Placeholder](./docs/screenshots/dashboard.png)
 
 ### Analytics
 ![Analytics Placeholder](./docs/screenshots/analytics-github01.png)
