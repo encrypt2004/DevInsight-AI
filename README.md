@@ -167,11 +167,11 @@ In practical terms, a recruiter enters a GitHub username and gets a complete ana
 
 
 ### Analytics
-![Analytics Placeholder](./docs/screenshots/analytics-github01.png)
+![Analytics Placeholder](./docs/analytics-github01.png)
 
 
 ### Analytics
-![Analytics Placeholder](./docs/screenshots/analytics-github.png)
+![Analytics Placeholder](./docs/analytics-github.png)
 
 ### Authentication
 > Authentication is not part of the current v1 flow. This section is reserved for the SaaS roadmap.
